@@ -1,0 +1,202 @@
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  color: gray;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who have turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.logo-container {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  padding-left: 2rem;
+}
+
+.picture-container {
+  grid-area: image;
+}
+
+.content-container {
+  height: auto;
+  padding: 0 2rem;
+  text-align: center;
+  grid-area: content;
+}
+
+.content-container > *:where(:not(:first-child):not(:last-child)) {
+  margin-top: 1rem;
+}
+
+.container {
+  background-image: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%),
+    hsl(0, 100%, 98%)
+  );
+  display: grid;
+  min-height: 100vh;
+  margin-inline: auto;
+  grid-template-areas:
+    'logo'
+    'image'
+    'content';
+}
+
+.main-title {
+  text-transform: uppercase;
+  font-size: 60px;
+  line-height: 0.95;
+}
+
+.text-black {
+  color: black;
+}
+
+form {
+  border: 1px solid gray;
+  border-radius: 100px;
+  display: flex;
+  padding: 1rem;
+  padding-left: 3rem;
+}
+
+.email-container {
+  width: 100%;
+  height: 100%;
+}
+
+.email-container > input,
+.email-container > input:active,
+.email-container > input:focus {
+  outline: none;
+  width: 100%;
+  border: none;
+}
+
+.email-container > input:hover {
+  cursor: pointer;
+}
+
+.error-message {
+  text-align: left;
+  margin-left: 3rem;
+  color: red;
+  display: none;
+}
+
+.border-red {
+  border: 1px solid red;
+}
+
+.error-message {
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 35rem) {
+  .logo {
+    grid-area: logo;
+  }
+
+  .picture {
+    grid-area: image;
+  }
+
+  .content-container {
+    height: auto;
+    padding: 0 2rem;
+    text-align: left;
+    grid-area: content;
+    word-break: keep-all;
+  }
+
+  .container {
+    grid-template-columns: repeat(5, 1fr) 4fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      '. logo logo logo logo image image image image'
+      '. content content content content image image image image'
+      '. content content content content image image image image'
+      '. content content content content image image image image';
+  }
+
+  .content-container > *:where(:not(:first-child):not(:last-child)) {
+    margin-top: 3rem;
+  }
+}
